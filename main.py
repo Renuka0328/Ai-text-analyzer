@@ -11,10 +11,12 @@ async def analyze_text(data: TextData):
 
         character_count = len(data.text)
         sentence_count = len(re.findall(r'[.!?]',data.text))
-        unique_word_count=data.text.split()
+        words = data.text.split()
+        unique_words = set(words)
+        unique_word_count = len(unique_words)
         uppercase_text=data.text.upper()
         lowercase_text=data.text.lower()
-        average_word_length=round(sum(len(word)for word in unique_word_count)/len(unique_word_count),2)
+        average_word_length=round(sum(len(word)for word in words)/len(words),2)
         return{
             "word_count": word_count,
             "character_count": character_count,
